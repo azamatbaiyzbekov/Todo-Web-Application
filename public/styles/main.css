@@ -67,12 +67,17 @@ input[type="submit"] {
 }
 
 /* Nav */
-
-.nav-bar h1{
+.nav-bar h1 {
   display: inline;
+  float: left;
   font-size: 40px;
   color: gray;
   margin: 0;
+  padding: 10px;
+}
+
+.nav-bar img {
+  display: inline;
   float: left;
 }
 

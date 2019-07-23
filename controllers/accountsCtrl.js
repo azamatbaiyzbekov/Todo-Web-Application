@@ -61,7 +61,6 @@ const newSession = (req, res) => {
   res.render('accounts/login');
 }
 
-
 const createSession = (req, res) => {
   const errors = [];
 
