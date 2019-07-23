@@ -6,7 +6,6 @@
 }
 
 body {
-  
   background-color: aquamarine;
   text-align: center;
   font-family: sans-serif;
@@ -31,6 +30,7 @@ input {
   font-size: 1em;
   line-break: 1.6;
   border: 2px solid #ddd;
+  text-align: center;
 }
 
 input[type="submit"] {
@@ -67,6 +67,24 @@ input[type="submit"] {
 }
 
 /* Nav */
+
+.nav-bar h1{
+  display: inline;
+  font-size: 40px;
+  color: gray;
+  margin: 0;
+  float: left;
+}
+
+.nav-bar a {
+  display: inline;
+  background-color: lightslategray;
+  color: white;
+  overflow: hidden;
+  padding: 0 5%;
+  padding: 25px 20px;
+  float: right;
+}
 
 nav {
   background-color: #ddd;

@@ -2,6 +2,10 @@
 // const response = require('./response');
 
 
+// const createUser = (req, res) => {
+//   res.render('accounts/login')
+// }
+
 // module.exports = {
 //   index: (req, res) => {
 //     db.User.find({}, (error, foundUsers) => {
