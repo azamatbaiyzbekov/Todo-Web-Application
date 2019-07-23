@@ -6,10 +6,13 @@ const path = require('path');
 // Middleware
 router.use(express.static(path.join(__dirname, `../public`)));
 
-
 router.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, `../views/index.html`));
 	res.render('index');
 });
+
+// router.get('/accounts', (req,res) => {
+// 	res.send
+// })
 
 module.exports = router;
