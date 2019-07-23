@@ -5,6 +5,7 @@ const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
 
+
 // SECTION : Instanced Modules
 const app = express();
 
@@ -28,6 +29,13 @@ app.use('/', routes.views);
 
 // Accounts Route
 app.use('/accounts', routes.accounts);
+
+app.use('/profile', routes.profile);
+
+
+
+
+// app.use('/login', routes.login);
 
 // SECTION : Root Route via routes
 
