@@ -30,3 +30,5 @@ const newUser = (req, res) = {
       return res.render('accounts/signup', { errors })
     }
   }
+const navLinks = document.querySelector('nav ul');
+const form = document.querySelector('form');
