@@ -16,4 +16,3 @@ const showProfile = (req, res) => {
 module.exports = {
     showProfile,
 }
-

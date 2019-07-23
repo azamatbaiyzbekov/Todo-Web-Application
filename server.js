@@ -1,9 +1,8 @@
-console.log('Project 1!');
-
 // SECTION : Modules
 const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
+// const session = require('express-session');
 
 
 // SECTION : Instanced Modules
@@ -21,10 +20,9 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 
-
 // SECTION : Routes
 
-
+// Root Route
 app.use('/', routes.views);
 
 // Accounts Route
@@ -41,7 +39,27 @@ app.use('/profile', routes.profile);
 
 
 // SECTION : API Endpoints
+app.get('/accounts/users', (req, res) => {
+  res.json([
+    {
+      name: 'test',
+      email: 'test',
+      password: 'test',
+      user_id: 'test',
+      sign_up_date: Date.now,
+    }
+  ])
+})
 
+app.get('/accounts', (req, res) =>{
+  res.json({
+    name: 'test',
+    email: 'test',
+    password: 'test',
+    user_id: 'test',
+    sign_up_date: Date.now,
+  })
+})
 
 
 // SECTION : Server Listener 
