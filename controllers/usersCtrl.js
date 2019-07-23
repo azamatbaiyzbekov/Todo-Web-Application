@@ -6,7 +6,7 @@ module.exports = {
   index: (req, res) => {
     db.User.find({}, (error, foundUsers) => {
       if (error) return response.sendErrorResponse(res, error);
-      response.sendResponse(res, foundUsers);
+      response.resultAll(res, foundUsers);
     })
   },
   show: (req, res) => {
@@ -28,7 +28,7 @@ module.exports = {
     })
   }, 
   delete: (req, res) => {
-    db.User.findByIdAndDelete(req.body._id, (error, deletedUser) => {
+    db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
       if (error) return response.sendErrorResponse(res, error);
       response.sendResponse(res, deletedUser);
       console.log(deletedUser);

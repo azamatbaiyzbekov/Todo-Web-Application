@@ -40,15 +40,13 @@ app.use('/', routes.views);
 // Accounts Route
 app.use('/accounts', routes.accounts);
 
-// Users Route
-app.use('/users', routes.users);
-
 // Profile Route
 app.use('/profile', routes.profile);
 
 
 // SECTION : API Endpoints
-
+// Users Route
+app.use('/api/users', routes.users);
 
 // SECTION : Server Listener 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
