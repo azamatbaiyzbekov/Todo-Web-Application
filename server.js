@@ -29,6 +29,12 @@ app.use('/', routes.views);
 // Accounts Route
 app.use('/accounts', routes.accounts);
 
+// Profile Route
+// app.use('/profile', routes.profile);
+
+// User Route
+// app.use('/users', routes.users);
+
 // SECTION : Root Route via routes
 
 
