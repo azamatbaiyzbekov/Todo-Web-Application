@@ -16,3 +16,18 @@ const form = document.querySelector('form');
 const newSession = (req, res)=> {
   res.rend('accounts/login');
 }
+
+const addButton = document.getElementById('add');
+// console.log(addButton);
+const inputTask = document.getElementById('new-task');
+
+const unifinishedTasks = document.getElementById('unfinished-tasks');
+
+const finishedTasks = document.getElementById('finished-tasks');
+
+function createNewElement(task) {
+  const listItem = document.createElement('li');
+  const checkbox = document.createElement('button');
+  checkbox.className="material-icons checkbox";
+  checkbox.innerHTML="<i class="material-icons">check_box_outline</i>";
+}

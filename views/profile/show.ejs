@@ -9,15 +9,55 @@
       <h3>Add To Do List</h3>
       <input id="new-task" type="text">
       <button id="add">Add task</button>
-      <h3>List of To Do's</h3>
+      <h3 id="unfinished-tasks">List of To Do's</h3>
       <ul>
         <li>
+          <button class="material-icons checkbox">
+            <i class="material-icons">check box outline</i>
+          </button>
+          <label>123</label>
+          <input type="text">
+          <button class="material-icons delete">
+              <i class="material-icons">delete</i>
+          </button>
+          <button class="material-icons edit">
+            <i class="material-icons">edit</i>
+          </button>
+        </li>
+      </ul>
+      <ul>
+      <li class="editMode">
           <button class="material-icons">
             <i class="material-icons">check box outline</i>
           </button>
           <label>123</label>
+          <input type="text" value="123">
+          <button class="material-icons delete">
+              <i class="material-icons">delete</i>
+          </button>
+          <button class="material-icons save">
+            <i class="material-icons">save</i>
+          </button>
         </li>
       </ul>
+
+      <h3 id="finished-tasks">Finished To DO's</h3>
+      <ul>
+          <li>
+            <button class="material-icons checkbox">
+              <i class="material-icons">check box</i>
+            </button>
+            <label>123</label>
+            <input type="text">
+            <button class="material-icons delete">
+                <i class="material-icons">delete</i>
+            </button>
+            <button class="material-icons edit">
+              <i class="material-icons">edit</i>
+            </button>
+          </li>
+        </ul>
+
 
     </div>
 
