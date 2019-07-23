@@ -1,5 +1,5 @@
 module.exports = {
     accountsCtrl: require('./accountsCtrl'),
-    // usersCtrl: require('./usersCtrl'),
+    usersCtrl: require('./usersCtrl'),
     profileCtrl: require('./profileCtrl'),
 }

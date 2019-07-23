@@ -2,7 +2,7 @@
 const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
-// const session = require('express-session');
+const session = require('express-session');
 
 // SECTION : Instanced Modules
 const app = express();
@@ -12,6 +12,19 @@ const PORT = process.env.PORT || 4000;
 
 
 // SECTION : Middleware
+
+// Express Sesssion
+app.use(session({
+  secret: 'SHHHHH!',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use((req, res, next) => {
+  console.log('REQ SESSION = ', req.session);
+  next();
+});
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -27,32 +40,14 @@ app.use('/', routes.views);
 // Accounts Route
 app.use('/accounts', routes.accounts);
 
+// Users Route
+app.use('/users', routes.users);
+
 // Profile Route
-// app.use('/profile', routes.profile);
+app.use('/profile', routes.profile);
 
 
 // SECTION : API Endpoints
-app.get('/accounts/users', (req, res) => {
-  res.json([
-    {
-      name: 'test',
-      email: 'test',
-      password: 'test',
-      user_id: 'test',
-      sign_up_date: Date.now,
-    }
-  ])
-})
-
-app.get('/accounts', (req, res) =>{
-  res.json({
-    name: 'test',
-    email: 'test',
-    password: 'test',
-    user_id: 'test',
-    sign_up_date: Date.now,
-  })
-})
 
 
 // SECTION : Server Listener 
