@@ -8,6 +8,14 @@ const UserSchema = new Schema({
   password: { type: String, required: true },
   user_id: { type: ObjectId },
   sign_up_date: { type: Date, default: Date.now },
+
+  // reference
+  lists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'List',
+    }
+  ]
 });
 
 

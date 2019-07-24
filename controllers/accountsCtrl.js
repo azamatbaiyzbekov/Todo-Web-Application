@@ -98,11 +98,10 @@ const createSession = (req, res) => {
 
 const deleteSession = (req, res) => {
   req.session.destroy((error) => {
-    if (err) return res.render('profile/show', { errors: [{ message: 'Something went wrong, please try again' }] });
+    if (error) return res.render('profile/show', { errors: [{ message: 'Something went wrong, please try again' }] });
   })
-
   res.redirect('/accounts/login')
-}
+};
 
 module.exports = {
   createUser,

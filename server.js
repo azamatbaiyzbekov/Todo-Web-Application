@@ -31,7 +31,7 @@ app.use(express.json());
 // EJS
 app.set('view engine', 'ejs');
 
-
+// SECTION : API Endpoints
 // SECTION : Routes
 
 // Root Route
@@ -43,8 +43,6 @@ app.use('/accounts', routes.accounts);
 // Profile Route
 app.use('/profile', routes.profile);
 
-
-// SECTION : API Endpoints
 // Users Route
 app.use('/api/users', routes.users);
 

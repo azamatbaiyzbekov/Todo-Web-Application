@@ -67,6 +67,7 @@ input[type="submit"] {
 }
 
 /* Nav */
+
 .nav-bar h1 {
   display: inline;
   float: left;
@@ -143,3 +144,12 @@ li.active a, nav li:hover a {
 .alert .container {
   margin: 0 auto;
 }
+
+/* .main{
+  background-color: white;
+  display: block;
+  max-width: 500px;
+  height: 50%;
+  border: 2px solid black;
+  overflow: hidden;
+} */
