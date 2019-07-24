@@ -81,3 +81,53 @@ window.onload = function() {
 			form.reset();
 		}
 	}
+
+	//adding string through style to list itme
+	function boxChecked(event) {
+		const element = event.target;
+		if(element.type === "checkbox") {
+			element.parentNode.style.textDecoration = "line-through";
+			todoList = JSON.parse(localStorage.getItem("todoList"));
+			todoList[element.id.split('-')[1]-1].checked = element.checked.toString();
+			localStorage.setItem("todoList", JSON.stringify(todoList));
+		}
+	}
+
+	//adding data to local storage
+	function addToLocalStorage() {
+		if(typeof(Storage) !== "undefined") {
+			localStorage.setItem("todoList", JSON.stringify(todoList));
+		}
+		else {
+			alert("browser doesn't support local storage!");
+		}
+	}
+
+	//display all todo list
+	function displayList() {
+		list.style.borderTop = "2px solid white";
+		todoList = JSON.parse(localStorage.getItem("todoList"));
+		todoList.forEach(function(element) {
+			console.log(element.item)
+			const text = element.item;
+			const item = `<li id="li-${id}">${text}<input id="box-${id}" class="checkboxes" type="checkbox"></li>`;
+			list.insertAdjacentHTML("beforeend", item);
+			//if we got a checked box, then style
+			if(element.checked) {
+				var li = document.getElementById("li-"+id);
+				li.style.textDecoration = "line-through";
+				li.childNodes[1].checked = element.checked;
+			}
+			id++;
+		});
+	}
+
+	//clear list event listener
+	function clearList() {
+		todoList = [];
+		localStorage.clear();
+		list.innerHTML = "";
+		btnClr.style.display = "none";
+		list.style.borderTop = "";
+	}
+}
