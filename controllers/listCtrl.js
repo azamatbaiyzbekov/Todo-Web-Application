@@ -17,7 +17,7 @@ module.exports = {
         foundUser.lists.push(createdList._id)
         foundUser.save()
         response.sendResponse(res, foundUser);
-      console.log(createdList);
+        console.log(createdList);
       })
     })
   }

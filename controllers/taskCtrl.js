@@ -2,19 +2,19 @@ const db = require('../models');
 const response = require('./response');
 
 module.exports = {
-  indexOfItems: (req, res) => {
-    db.Item.find({}, (error, foundItems) =>{
+  indexOfTasks: (req, res) => {
+    db.Task.find({}, (error, foundTasks) =>{
       if (error) return response.sendErrorResponse(res, error);
-      response.resultAll(res, foundItems);
+      response.resultAll(res, foundTasks);
     })
   },
-  createItems: (req, res) => {
+  createTask: (req, res) => {
     let user = req.session.currentUser;
     console.log(user);
-    db.Item.create(req.body, (error, createdItem) =>{
+    db.Task.create(req.body, (error, createdTask) =>{
       if (error) return response.sendErrorResponse(res, error);
-      response.sendResponse(res, createdItem);
-      console.log(createdList);
+      response.sendResponse(res, createdTask);
+      console.log(createdTask);
     })
   }
 }

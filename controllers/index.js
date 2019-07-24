@@ -3,5 +3,5 @@ module.exports = {
     usersCtrl: require('./usersCtrl'),
     profileCtrl: require('./profileCtrl'),
     listCtrl: require('./listCtrl'),
-    itemCtrl: require('./itemCtrl')
+    taskCtrl: require('./taskCtrl')
 }
