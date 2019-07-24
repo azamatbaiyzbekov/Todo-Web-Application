@@ -1,68 +1,90 @@
 <% include ../partials/_head.ejs %>
 
   <section class="container">
-    <h1>Welcome to the profile page</h1>
+    <h1>Welcome to your profile page</h1>
   </section>
+  <main>
+    <div id="date"></div>
+    <br>
+   <section>
+          
+          <!-- <form id="newListForm">
+            <input type="text" id="My-To-Do-List" name="My list of To Do's" placeholder="My-To-Do-List" />
+            <input type="text" id="description" name="description" placeholder="Description" />
+            <button type="submit">Add List</button>
+            
+          </form>
+        </section>
+       
+       
+        <section id="myList"></section> -->
 
-  <div id="root">
-    <div class="container">
-      <h3>Add To Do List</h3>
-      <input id="new-task" type="text">
-      <button id="add">Add task</button>
-      <h3 id="unfinished-tasks">List of To Do's</h3>
-      <ul>
-        <li>
-          <button class="material-icons checkbox">
-            <i class="material-icons">check box outline</i>
-          </button>
-          <label>123</label>
-          <input type="text">
-          <button class="material-icons delete">
-              <i class="material-icons">delete</i>
-          </button>
-          <button class="material-icons edit">
-            <i class="material-icons">edit</i>
-          </button>
-        </li>
-      </ul>
-      <ul>
-      <li class="editMode">
-          <button class="material-icons">
-            <i class="material-icons">check box outline</i>
-          </button>
-          <label>123</label>
-          <input type="text" value="123">
-          <button class="material-icons delete">
-              <i class="material-icons">delete</i>
-          </button>
-          <button class="material-icons save">
-            <i class="material-icons">save</i>
-          </button>
-        </li>
-      </ul>
+        </div>
+    
+      </main>  
 
-      <h3 id="finished-tasks">Finished To DO's</h3>
-      <ul>
-          <li>
-            <button class="material-icons checkbox">
-              <i class="material-icons">check box</i>
-            </button>
-            <label>123</label>
-            <input type="text">
-            <button class="material-icons delete">
-                <i class="material-icons">delete</i>
-            </button>
-            <button class="material-icons edit">
-              <i class="material-icons">edit</i>
-            </button>
-          </li>
-        </ul>
+      <br>
 
+      <div id="root">
+        <div class="container">
+          <h3>Add To Do</h3>
+          <input id="new-task" type="text">
+          <button id="add">Add</button>
+          <h3>List of To Do:</h3>
+          <ul id="unfinished-tasks">
+            <li>
+              <button class="material-icons checkbox">
+                <i class="material-icons">check_box_outline_blank</i>
+              </button>
+              <label>123</label>
+              <input type="text">
+              <button class="material-icons delete">
+               <i class="material-icons">delete</i>
+                </button>
+              <button class="material-icons edit">
+                <i class="material-icons">edit</i>
+              </button>
+              
+            </li>
+            <li class="editMode" >
+              <button class="material-icons checkbox">
+                <i class="material-icons">check_box_outline_blank</i>
+              </button>
+              <label>123</label>
+              <input type="text" value="123">
+              <button class="material-icons delete">
+                  <i class="material-icons">delete</i>
+              </button>
+              <button class="material-icons save">
+                <i class="material-icons">save</i>
+              </button>
+            </li>
 
-    </div>
+          </ul>
 
-  </div>
+          <h3>Finished List</h3>
+          <ul id="finished-tasks">
+              <li>
+                <button class="material-icons checkbox">
+                  <i class="material-icons">check_box</i>
+                </button>
+                <label>123</label>
+                <input type="text">
+                <button class="material-icons delete">
+                 <i class="material-icons">delete</i>
+                  </button>
+                <button class="material-icons edit">
+                  <i class="material-icons">edit</i>
+                </button>
+                
+              </li>
+               
   
+            </ul>
+        </div>
+      </div>
+
+    
 
 <% include ../partials/_footer.ejs %>
 
