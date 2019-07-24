@@ -50,7 +50,7 @@ app.use('/api/users', routes.users);
 app.use('/lists', routes.lists);
 
 // Users Tasks
-app.use('/tasks', routes.tasks);
+// app.use('/tasks', routes.tasks);
 
 // SECTION : Server Listener 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));

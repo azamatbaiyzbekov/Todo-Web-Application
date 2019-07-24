@@ -8,13 +8,23 @@ module.exports = {
       response.resultAll(res, foundTasks);
     })
   },
+  showTask: (req, res) => {
+   db.Task.FindById(req.params.id, (error, foundTask) => {
+     if (error) return response.sendErrorResponse(res, error);
+     response.sendResponse(error, foundTask);
+   })
+  },
   createTask: (req, res) => {
-    let user = req.session.currentUser;
-    console.log(user);
+    let listId = req.params.id
+    console.log(listId);
     db.Task.create(req.body, (error, createdTask) =>{
       if (error) return response.sendErrorResponse(res, error);
-      response.sendResponse(res, createdTask);
-      console.log(createdTask);
+      db.List.findOne({_id:listId}, (error, foundList) =>{
+        if (error) return response.sendErrorResponse(res,error);
+        foundList.tasks.push(createdTask)
+        foundList.save()
+        response.sendResponse(res, foundList)
+      })
     })
   }
 }
