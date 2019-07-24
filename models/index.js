@@ -12,5 +12,5 @@ mongoose.connect(DB_URL, {
 module.exports = {
   User: require('./User'),
   List: require('./List'),
-  Item: require('./Item')
+  Task: require('./Task'),
 };

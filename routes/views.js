@@ -11,8 +11,4 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
-// router.get('/accounts', (req,res) => {
-// 	res.send
-// })
-
 module.exports = router;

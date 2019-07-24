@@ -140,3 +140,76 @@ const options2 = {weekday: 'long', month: 'short', day: 'numeric'}
 const today2 = new Date();
 
 dateWelcome.innerText = today2.toLocaleDateString('en-US', options2)
+
+
+// EVENT LISTENERS
+// Validate Form Inputs
+form && form.addEventListener('submit', (e) => {
+  [...document.querySelectorAll('.alert')].forEach(alert => {
+    alert.parentNode.removeChild(alert);
+  });
+  
+  [...form.elements].forEach(input => {
+    if (input.type !== 'submit' && input.value === '') {
+      e.preventDefault();
+      input.classList.add('input-error');
+      input.insertAdjacentHTML('afterend', `
+        <div class="alert alert-${input.id}">
+          Please enter your ${input.placeholder}
+        </div>
+      `);
+    }
+  });
+});
+
+// Validate Form Input on Blur
+document.addEventListener('blur', (e) => {
+  if (e.target.value === '') {
+    e.target.classList.add('input-error');
+    e.target.insertAdjacentHTML('afterend', `
+      <div class="alert alert-${e.target.id}">
+        Please enter your ${e.target.placeholder}
+      </div>
+    `);
+  } else if (e.target.type === 'password' && e.target.value.length < 4) {
+      e.preventDefault();
+      e.target.classList.add('input-error');
+      e.target.insertAdjacentHTML('afterend', `
+        <div class='alert ${e.target.id}-message'>
+          Password must be at least 4 characters
+        </div>
+      `);
+    }
+}, true);
+
+// Clear Form Errors on Focus
+document.addEventListener('focus', (e) => {
+  e.target.classList.remove('input-error');
+  const inputMessage = document.querySelector(`.alert-${e.target.id}`);
+  inputMessage && inputMessage.parentNode.removeChild(inputMessage);
+}, true);
+
+
+
+const BASE_URL = '/api/users/current';
+
+const state = {
+	user: {},
+	lists: []
+}
+
+const getUser = () => {
+	fetch(BASE_URL)
+	.then((res) => res.json())
+	.then(json => {
+		state.user = json.data;
+		state.lists = json.data.lists;
+		console.log({state});
+	})
+	.catch((err) => console.log(err))
+
+};
+
+// console.log(getAllUsers);
+
+getUser();

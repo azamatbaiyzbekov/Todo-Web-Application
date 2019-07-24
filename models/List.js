@@ -1,21 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Item = require('./Item');
+const Task = require('./Task');
 
 const ListSchema = new Schema({
-    id: {type: String},
-    userId: {type: String},
-    user: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    ],
-
-    items: [Item.schema]
-});
+  typeOfList: { type: String },
+  dateAdded: { type: Date, default: Date.now },
+  // Embedded
+  tasks: [Task.schema],
+}); 
 
 const List = mongoose.model('List', ListSchema);
-
 module.exports = List;
-

@@ -66,7 +66,6 @@ const newSession = (req, res) => {
   res.render('accounts/login');
 }
 
-
 const createSession = (req, res) => {
   const errors = [];
 
@@ -94,7 +93,7 @@ const createSession = (req, res) => {
 
       if (isMatch) {
         req.session.currentUser = { _id: foundUser._id, name: foundUser.name, email: foundUser.email };
-        return res.redirect('/profile');
+        return res.redirect('/accounts/welcome');
       } else {
         return res.render('accounts/login', { errors: [{ message: 'Username or password is incorrect' }] })
       }
@@ -104,11 +103,10 @@ const createSession = (req, res) => {
 
 const deleteSession = (req, res) => {
   req.session.destroy((error) => {
-    if (err) return res.render('profile/show', { errors: [{ message: 'Something went wrong, please try again' }] });
+    if (error) return res.render('profile/show', { errors: [{ message: 'Something went wrong, please try again' }] });
   })
-
   res.redirect('/accounts/login')
-}
+};
 
 module.exports = {
   createUser,
