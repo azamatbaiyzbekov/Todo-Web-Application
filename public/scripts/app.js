@@ -131,3 +131,12 @@ window.onload = function() {
 		list.style.borderTop = "";
 	}
 }
+
+
+
+const dateWelcome = document.getElementById('date2');
+
+const options2 = {weekday: 'long', month: 'short', day: 'numeric'}
+const today2 = new Date();
+
+dateWelcome.innerText = today2.toLocaleDateString('en-US', options2)

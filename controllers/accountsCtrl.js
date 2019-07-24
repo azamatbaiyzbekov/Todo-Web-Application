@@ -3,6 +3,11 @@ const bcrypt = require('bcrypt');
 
 // ====== SIGN UP ====== // 
 
+
+const welcome = (req, res) => {
+  res.render('accounts/welcome');
+};
+
 // GET : New User
 const newUser = (req, res) => {
   res.render('accounts/signup');
@@ -111,4 +116,5 @@ module.exports = {
   newSession,
   createSession,
   deleteSession,
+  welcome,
 };
