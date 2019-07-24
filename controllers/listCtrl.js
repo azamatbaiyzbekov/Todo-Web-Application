@@ -28,9 +28,10 @@ module.exports = {
     })
   },
   updateList: (req, res) => {
-    db.List.findByIdAndUpdate(eeq.params.id, req.body, { updated: true }, (error, updatedList) => {
+    let user = req.session.currentUser;
+    db.List.findByIdAndUpdate(req.params.id, req.body, { updated: true }, (error, updatedList) => {
       if (error) return response.sendErrorResponse(res, error);
-      response.sendResponse(res, updateList);
+      response.sendResponse(res, updatedList);
     })
   }
 }
