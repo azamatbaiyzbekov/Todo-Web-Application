@@ -27,6 +27,24 @@ dateElement.innerText = today.toLocaleDateString('en-US', options)
 
 
 
+window.onload = function() {
+	//variables
+	const form = document.getElementById("form");
+	const input = document.getElementById("input");
+	const btn = document.getElementById("btn");
+	const list = document.getElementById("list");	
+	const btnClr = document.getElementById("btnClr");	
+	const id = 1;
+	// listItem = {item: "todo item", checked: flase}
+	const liItem = "";
+	const todoList = [];
 
+	//button event listener
+	btn.addEventListener("click", addTodoItem);
 
+	//list event listener
+	list.addEventListener("click", boxChecked);
+
+	//event listener for clear list
+	btnClr.addEventListener("click", clearList);
 
