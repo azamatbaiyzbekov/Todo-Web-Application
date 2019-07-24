@@ -48,3 +48,36 @@ window.onload = function() {
 	//event listener for clear list
 	btnClr.addEventListener("click", clearList);
 
+
+	if(localStorage.length <= 0) {
+		btnClr.style.display = "none"; //hide clear btn	
+		console.log("button");
+	}
+
+	//checking localstorage has data
+	if(localStorage.length > 0) {
+		displayList();
+	}
+
+
+	//add todo item to list
+	function addTodoItem() {
+		if(input.value === "") {
+			alert("You must enter some value!");
+		}
+		else {
+			if(list.style.borderTop === "") {
+				console.log("here!")
+				list.style.borderTop = "2px solid white";
+				btnClr.style.display = "inline";
+			}
+			const text = input.value;	
+			const item = `<li id="li-${id}">${text}<input id="box-${id}" 			class="checkboxes" type="checkbox"></li>`;				
+			list.insertAdjacentHTML('beforeend', item);	
+			liItem = {item: text, checked: false};
+			todoList.push(liItem);		
+			id++;
+			addToLocalStorage()
+			form.reset();
+		}
+	}
