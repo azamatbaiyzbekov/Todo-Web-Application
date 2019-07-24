@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-ObjectId = Schema.ObjectId;
+const Item = require('./Item');
 
 const ListSchema = new Schema({
   typeOfList: { type: String },
-  id: { type: ObjectId },
+  dateAdded: { type: Date, default: Date.now },
   // Embedded
-  // items: [Item.Schema],
+  items: [Item.schema],
 }); 
 
 const List = mongoose.model('List', ListSchema);

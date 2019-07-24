@@ -4,13 +4,17 @@ const response = require('./response');
 
 module.exports = {
   index: (req, res) => {
-    db.User.find({}, (error, foundUsers) => {
+    db.User.find({})
+    .populate('lists')
+    .exec((error, foundUsers) => {
       if (error) return response.sendErrorResponse(res, error);
       response.resultAll(res, foundUsers);
     })
   },
   show: (req, res) => {
-    db.User.findOne({ name: req.params.name }, (error, foundUser) => {
+    db.User.findById(req.params.id)
+    .populate('lists')
+    .exec((error, foundUser) => {
       if (error) return response.sendErrorResponse(res, error);
       response.sendResponse(res, foundUser);
     })
@@ -22,7 +26,7 @@ module.exports = {
     })
   },
   update: (req, res) => {
-    db.User.findOneAndUpdate(req.params.name, req.body, { new: true }, (error, updatedUser) => {
+    db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedUser) => {
       if (error) return response.sendErrorResponse(res, error);
       response.sendResponse(res, updatedUser);
     })

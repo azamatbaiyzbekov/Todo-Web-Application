@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrl = require('../controllers');
 
-router.get('/', ctrl.listCtrl.indexOfLists);
-router.post('/', ctrl.listCtrl.createList);
+router.get('/', ctrl.itemCtrl.indexOfItems);
+router.post('/', ctrl.itemCtrl.createItems);
 
 module.exports = router;
