@@ -29,15 +29,15 @@ dateElement.innerText = today.toLocaleDateString('en-US', options)
 
 window.onload = function() {
 	//variables
-	const form = document.getElementById("form");
-	const input = document.getElementById("input");
-	const btn = document.getElementById("btn");
-	const list = document.getElementById("list");	
-	const btnClr = document.getElementById("btnClr");	
-	const id = 1;
+	let form = document.getElementById("form");
+	let input = document.getElementById("input");
+	let btn = document.getElementById("btn");
+	let list = document.getElementById("list");	
+	let btnClr = document.getElementById("btnClr");	
+	let id = 1;
 	// listItem = {item: "todo item", checked: flase}
-	const liItem = "";
-	const todoList = [];
+	let liItem = "";
+	let todoList = [];
 
 	//button event listener
 	btn.addEventListener("click", addTodoItem);
@@ -71,8 +71,8 @@ window.onload = function() {
 				list.style.borderTop = "2px solid white";
 				btnClr.style.display = "inline";
 			}
-			const text = input.value;	
-			const item = `<li id="li-${id}">${text}<input id="box-${id}" 			class="checkboxes" type="checkbox"></li>`;				
+			let text = input.value;	
+			let item = `<li id="li-${id}">${text}<input id="box-${id}" 			class="checkboxes" type="checkbox"></li>`;				
 			list.insertAdjacentHTML('beforeend', item);	
 			liItem = {item: text, checked: false};
 			todoList.push(liItem);		
@@ -109,12 +109,12 @@ window.onload = function() {
 		todoList = JSON.parse(localStorage.getItem("todoList"));
 		todoList.forEach(function(element) {
 			console.log(element.item)
-			const text = element.item;
-			const item = `<li id="li-${id}">${text}<input id="box-${id}" class="checkboxes" type="checkbox"></li>`;
+			let text = element.item;
+			let item = `<li id="li-${id}">${text}<input id="box-${id}" class="checkboxes" type="checkbox"></li>`;
 			list.insertAdjacentHTML("beforeend", item);
 			//if we got a checked box, then style
 			if(element.checked) {
-				var li = document.getElementById("li-"+id);
+				let li = document.getElementById("li-"+id);
 				li.style.textDecoration = "line-through";
 				li.childNodes[1].checked = element.checked;
 			}
