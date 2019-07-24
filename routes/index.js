@@ -3,4 +3,5 @@ module.exports = {
     views: require('./views'),
     profile: require('./profile'),
     users: require('./users'),
+    lists: require('./lists'),
 }

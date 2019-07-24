@@ -44,7 +44,10 @@ app.use('/accounts', routes.accounts);
 app.use('/profile', routes.profile);
 
 // Users Route
-app.use('/api/users', routes.users);
+app.use('/users', routes.users);
+
+// Profile Users List
+app.use('/lists', routes.lists);
 
 // SECTION : Server Listener 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
