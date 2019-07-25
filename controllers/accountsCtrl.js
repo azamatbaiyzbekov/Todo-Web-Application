@@ -1,6 +1,10 @@
 const db = require('../models');
 const bcrypt = require('bcrypt');
 
+const welcome = (req, res) => {
+  res.render('accounts/welcome');
+}
+
 // ====== SIGN UP ====== // 
 
 // GET : New User
@@ -88,7 +92,7 @@ const createSession = (req, res) => {
 
       if (isMatch) {
         req.session.currentUser = { _id: foundUser._id, name: foundUser.name, email: foundUser.email };
-        return res.redirect('/profile');
+        return res.redirect('/accounts/welcome');
       } else {
         return res.render('accounts/login', { errors: [{ message: 'Username or password is incorrect' }] })
       }
@@ -104,6 +108,7 @@ const deleteSession = (req, res) => {
 };
 
 module.exports = {
+  welcome,
   createUser,
   newUser,
   newSession,

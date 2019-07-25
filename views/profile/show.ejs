@@ -11,13 +11,34 @@
     <h1>Welcome To Your Profile!</h1>
   </section>
 
+  <%# <section>
+      <div class="form-group">
+        <label for="text">Add New List:</label>
+        <input type="text" id="ToDo" name="ToDo" placeholder="name of the list" />
+        <button type="submit" id="add-list">Add To Do</button>
+        
+      </div>
+      <section id="list"></section>
+    </section> %>
+
+
 <% include ../partials/_footer.ejs %>
 
 
 <style>
 
 body {
-background-image: linear-gradient(to right, grey, white, navy);
+background-image: linear-gradient(to left, grey, white, navy);
+}
+
+.form-group {
+  margin: 0 auto;
+
+}
+
+.form-group label {
+  font-size: 25px;
+
 }
 
 .nav-bar {
@@ -27,6 +48,10 @@ background-image: linear-gradient(to right, grey, white, navy);
   position: fixed;
 }
 
+.nav-bar a {
+  font-size: 18px;
+  color: white;
+}
 .nav-bar img {
   float: left;
 }

@@ -82,7 +82,7 @@ input[type="submit"] {
 .header {
   height: 75px;
   width: 100%;
-  background-image: linear-gradient(to left,black, white, black);
+  background-image: linear-gradient(to left,yellow, white, navy);
   position: fixed;
   top: 0;
   left: 0;
@@ -99,11 +99,13 @@ input[type="submit"] {
 
 .nav-bar a {
   display: inline;
-  color: white;
+  color: navy;
+  font-size: 18px;
   overflow: hidden;
   padding: 0 5%;
   padding: 25px 20px;
   float: right;
+  text-decoration: none;
 }
 
 .nav-bar a:hover {
