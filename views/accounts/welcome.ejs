@@ -1,5 +1,5 @@
 <% include ../partials/_head.ejs %>
-
+<script src="/scripts/todo.js" defer></script>
 <div id="date2"></div>
 
 <section class="login">
@@ -23,36 +23,32 @@
       <div class="form-group">
         <label for="text">Add New List, Click below</label>
         <input type="text" id="ToDo" name="ToDo" placeholder="name of the list" />
-        <button type="submit" id="button">Add To Do</button>
+        <button type="submit" id="add-list">Add To Do</button>
         
       </div>
+      <section id="list"></section>
     </section>
   
 
-      <style>
-        body {
-          background-color: rgb(41, 192, 212);
-          background-image: url("https://pm1.narvii.com/6703/fdda414cbe75da98e41c0accb7baa3fcf3017bbf_hq.jpg");
+    <style>
+
+      :root {
+          --righteous-font: 'Righteous', cursive;
+      }
+      
+      body { 
+          background-image: url("https://blog.hubspot.com/hubfs/To_Do_List.png");
+          min-height: 100vh;
+          z-index: -10;
           background-position: center;
           background-repeat: no-repeat;
+          background-size: cover;
+          color: white;
+          font-size: 1.3rem;		    
+      }
     
-        }
-
-        h1  {
-          color: blue;
-          margin: 0px;
-          padding: 0px;
-          text-align: left;
-          margin-top: 12rem;
-	        margin-bottom: 0px;
-	        font-family: var(--righteous-font);
-}
-        	
-        
-
-        
-       </style>
-
+      </style>
+    
 
 
       

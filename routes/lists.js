@@ -3,7 +3,8 @@ const router = express.Router();
 const ctrl = require('../controllers');
 
 router.get('/', ctrl.listCtrl.indexOfLists);
-router.post('/profile', ctrl.listCtrl.createList);
+router.post('/', ctrl.listCtrl.createList);
+router.delete('/:id', ctrl.listCtrl.deleteList);
 
 module.exports = router;
 

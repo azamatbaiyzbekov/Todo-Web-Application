@@ -19,12 +19,12 @@ const newSession = (req, res)=> {
 
 
 
-const dateElement = document.getElementById('date');
+// const dateElement = document.getElementById('date');
 
-const options = {weekday: 'long', month: 'short', day: 'numeric'}
-const today = new Date();
+// const options = {weekday: 'long', month: 'short', day: 'numeric'}
+// const today = new Date();
 
-dateElement.innerText() = today.toLocaleDateString('en-US', options)
+// dateElement.innerText() = today.toLocaleDateString('en-US', options)
 
 // const BASE_URL = '/api/users/current';
 // const BASE_URL2 = '/api/profile'
