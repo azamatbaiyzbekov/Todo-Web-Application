@@ -3,10 +3,19 @@ const getTime = () => {
 	return new Date().toLocaleString();
 };
 
+const resultAll = (res, data) => {
+	res.status(200).json({
+		status: 200,
+		requestedAt: getTime(),
+		numberOfResults: data.length,
+		data: data
+	});
+};
+
 const sendResponse = (res, data) => {
 	res.status(200).json({
 		status: 200,
-    requestedAt: getTime(),
+		requestedAt: getTime(),
 		data: data
 	});
 };
@@ -20,6 +29,7 @@ const sendErrorResponse = (res, error) => {
 };
 
 module.exports ={
+	resultAll,
   sendResponse,
   sendErrorResponse
 };

@@ -2,7 +2,8 @@
 const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
-// const session = require('express-session');
+const session = require('express-session');
+
 
 // SECTION : Instanced Modules
 const app = express();
@@ -12,12 +13,24 @@ const PORT = process.env.PORT || 4000;
 
 
 // SECTION : Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+
+// Express Sesssion
+app.use(session({
+  secret: 'SHHHHH!',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use((req, res, next) => {
+  // console.log('REQ SESSION = ', req.session);
+  next();
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 // EJS
 app.set('view engine', 'ejs');
-
 
 // SECTION : Routes
 
@@ -27,33 +40,26 @@ app.use('/', routes.views);
 // Accounts Route
 app.use('/accounts', routes.accounts);
 
-// Profile Route
-// app.use('/profile', routes.profile);
 
+
+
+
+// app.use('/login', routes.login);
+
+// SECTION : Root Route via routes
+// Profile Route
+app.use('/profile', routes.profile);
+
+// Users Lists/Tasks
+app.use('/lists', routes.lists);
 
 // SECTION : API Endpoints
-app.get('/accounts/users', (req, res) => {
-  res.json([
-    {
-      name: 'test',
-      email: 'test',
-      password: 'test',
-      user_id: 'test',
-      sign_up_date: Date.now,
-    }
-  ])
-})
+// Users Route
+app.use('/api/users', routes.users);
 
-app.get('/accounts', (req, res) =>{
-  res.json({
-    name: 'test',
-    email: 'test',
-    password: 'test',
-    user_id: 'test',
-    sign_up_date: Date.now,
-  })
-})
 
+// Users Tasks
+// app.use('/tasks', routes.tasks);
 
 // SECTION : Server Listener 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
