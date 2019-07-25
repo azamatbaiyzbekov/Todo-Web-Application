@@ -18,12 +18,13 @@ const newSession = (req, res)=> {
 }
 
 
-const dateElement = document.getElementById('date');
 
-const options = {weekday: 'long', month: 'short', day: 'numeric'}
-const today = new Date();
+// const dateElement = document.getElementById('date');
 
-dateElement.innerText = today.toLocaleDateString('en-US', options)
+// const options = {weekday: 'long', month: 'short', day: 'numeric'}
+// const today = new Date();
+
+// dateElement.innerText = today.toLocaleDateString('en-US', options)
 
 
 
@@ -130,6 +131,33 @@ window.onload = function() {
 		btnClr.style.display = "none";
 		list.style.borderTop = "";
 	}
+
+
+	// on load get user that is logged in
+		const BASE_URL = '/api/users/current';
+		console.log('gello')
+
+	const state = {
+		user: {},
+		lists: []
+	}
+
+	const getUser = () => {
+		fetch(BASE_URL)
+		.then((res) => res.json())
+		.then(json => {
+			state.user = json.data;
+			state.lists = json.data.lists;
+			console.log({state});
+		})
+		.catch((err) => console.log(err))
+
+	};
+
+	// console.log(getAllUsers);
+
+	getUser();
+
 }
 
 
@@ -191,25 +219,3 @@ document.addEventListener('focus', (e) => {
 
 
 
-const BASE_URL = '/api/users/current';
-
-const state = {
-	user: {},
-	lists: []
-}
-
-const getUser = () => {
-	fetch(BASE_URL)
-	.then((res) => res.json())
-	.then(json => {
-		state.user = json.data;
-		state.lists = json.data.lists;
-		console.log({state});
-	})
-	.catch((err) => console.log(err))
-
-};
-
-// console.log(getAllUsers);
-
-getUser();
