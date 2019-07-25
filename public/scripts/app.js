@@ -26,139 +26,176 @@ const newSession = (req, res)=> {
 
 // dateElement.innerText = today.toLocaleDateString('en-US', options)
 
+const BASE_URL = '/api/users/current';
 
-
-window.onload = function() {
-	//variables
-	let form = document.getElementById("form");
-	let input = document.getElementById("input");
-	let btn = document.getElementById("btn");
-	let list = document.getElementById("list");	
-	let btnClr = document.getElementById("btnClr");	
-	let id = 1;
-	// listItem = {item: "todo item", checked: flase}
-	let liItem = "";
-	let todoList = [];
-
-	//button event listener
-	btn.addEventListener("click", addTodoItem);
-
-	//list event listener
-	list.addEventListener("click", boxChecked);
-
-	//event listener for clear list
-	btnClr.addEventListener("click", clearList);
-
-
-	if(localStorage.length <= 0) {
-		btnClr.style.display = "none"; //hide clear btn	
-		console.log("button");
-	}
-
-	//checking localstorage has data
-	if(localStorage.length > 0) {
-		displayList();
-	}
-
-
-	//add todo item to list
-	function addTodoItem() {
-		if(input.value === "") {
-			alert("You must enter some value!");
-		}
-		else {
-			if(list.style.borderTop === "") {
-				console.log("here!")
-				list.style.borderTop = "2px solid white";
-				btnClr.style.display = "inline";
-			}
-			let text = input.value;	
-			let item = `<li id="li-${id}">${text}<input id="box-${id}" 			class="checkboxes" type="checkbox"></li>`;				
-			list.insertAdjacentHTML('beforeend', item);	
-			liItem = {item: text, checked: false};
-			todoList.push(liItem);		
-			id++;
-			addToLocalStorage()
-			form.reset();
-		}
-	}
-
-	//adding string through style to list itme
-	function boxChecked(event) {
-		const element = event.target;
-		if(element.type === "checkbox") {
-			element.parentNode.style.textDecoration = "line-through";
-			todoList = JSON.parse(localStorage.getItem("todoList"));
-			todoList[element.id.split('-')[1]-1].checked = element.checked.toString();
-			localStorage.setItem("todoList", JSON.stringify(todoList));
-		}
-	}
-
-	//adding data to local storage
-	function addToLocalStorage() {
-		if(typeof(Storage) !== "undefined") {
-			localStorage.setItem("todoList", JSON.stringify(todoList));
-		}
-		else {
-			alert("browser doesn't support local storage!");
-		}
-	}
-
-	//display all todo list
-	function displayList() {
-		list.style.borderTop = "2px solid white";
-		todoList = JSON.parse(localStorage.getItem("todoList"));
-		todoList.forEach(function(element) {
-			console.log(element.item)
-			let text = element.item;
-			let item = `<li id="li-${id}">${text}<input id="box-${id}" class="checkboxes" type="checkbox"></li>`;
-			list.insertAdjacentHTML("beforeend", item);
-			//if we got a checked box, then style
-			if(element.checked) {
-				let li = document.getElementById("li-"+id);
-				li.style.textDecoration = "line-through";
-				li.childNodes[1].checked = element.checked;
-			}
-			id++;
-		});
-	}
-
-	//clear list event listener
-	function clearList() {
-		todoList = [];
-		localStorage.clear();
-		list.innerHTML = "";
-		btnClr.style.display = "none";
-		list.style.borderTop = "";
-	}
-
-
-	// on load get user that is logged in
-		const BASE_URL = '/api/users/current';
-		console.log('gello')
-
-	const state = {
-		user: {},
-		lists: []
-	}
-
-	const getUser = () => {
-		fetch(BASE_URL)
-		.then((res) => res.json())
-		.then(json => {
-			state.user = json.data;
-			state.lists = json.data.lists;
-			console.log({state});
-		})
-		.catch((err) => console.log(err))
-
-	};
-
-	// console.log(getAllUsers);
-
-	getUser();
-
+//---------------------------------------STATE VARIABLES-----------//
+let state = {
+  user: {},
+  lists: []
 }
+
+// -------------------------------- DOM ELEMENTS ------------------------------- //
+
+
+const newListForm = document.getElementById('newListForm');
+const listSection = document.getElementById('list');
+
+
+// -------------------------------- Functions ------------------------------- //
+
+const toDoTemplate = (list) => {
+	return `<div id="${list._id}">
+	<h4>${list.name}</h4>
+	<p class="description">${list.description}</p>
+	<button class="delete-button">&times;</button> 
+	<button class="edit-button">edit</button>
+	</div>`
+  }
+  
+
+
+const render = (state) => {
+	console.log(state)
+  listSection.innerHTML = '';
+  state.lists.forEach(list => {
+    const template = toDoTemplate(list);
+    listSection.insertAdjacentHTML('afterbegin', template)
+  });
+}
+
+
+const allListSuccess = (response) => {                           //passing city json data to our DOM, web browser
+  const { data } = response;
+  state = data;                                             //heree we given our app a memory
+  
+};
+
+
+
+const getAllList = () => {                                     //function to display json data in html page
+ 
+  fetch(BASE_URL)
+    .then((res) => res.json())
+    .then(json => {
+	  state.user = json.data;
+	  state.lists = json.data.lists;
+      render(state);
+    })
+    .catch((err) => console.log(err));
+}
+
+getAllList();
+
+
+
+
+
+const addNewList = (event) => {
+  event.preventDefault();
+  const name = document.getElementById('To-Do')
+  const description = document.getElementById('description')
+  const newToDo = { name: name.value, description: description.value };
+  
+  fetch(BASE_URL, {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json', },
+    body: JSON.stringify(newToDo),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      state.push(data.data);
+      render(state);
+      name.value = '';
+      description.value = '';
+      name.focus();
+    })
+    .catch((err) => console.log(err))
+}
+
+const newListSuccess = (response) => {
+    console.log(response);
+    getAllList();
+}
+
+
+
+const deleteToDo = (event) => {                             //function to creat click button and delete.
+  
+  const listId = event.target.parentNode.id;
+  
+  fetch(`${BASE_URL}/${listId}`, {
+    method: 'DELETE',
+  })
+  .then((res) => res.json())
+  .then(data => getAllList())
+  .catch((err) => console.log(err));
+}
+
+const editToDo = (event) => {
+  
+  const ToDoName = event.target.parentNode.children[0].innerText;
+  const ToDoDescription = event.target.parentNode.children[1].innerText;
+  event.target.parentNode.inneHTML = `
+  <h4>Edit ${ToDoName}</h4>
+    <form>
+      <div>
+        <label for="cityName">City Name</label>
+        <input type="text" id="editCityName" name="name" value="${ToDoName}"/>
+      </div>
+      <div>
+        <label for="cityDescription">City Descriptioin</label>
+        <input type="text" id="editCityDescription" name="description" value="${ToDoDescription}"/>
+      </div>
+      <button type="button" class="cancel-edit">Cancel</button>
+      <button class="submit-edit">Submit</button>
+    </form>
+  `;
+};
+
+const updateList = (event) => {
+  listId = event.target.parentNode.parentNode.id;
+  
+    const listName = document.getElementById('editListName').value;
+    const listDescription = document.getElementById('editListDescription').value;
+    const newList= { name: listName, description: listDescription };
+
+  fetch(`${BASE_URL}/${listId}`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json'},
+    body: JSON.stringify(newList)
+  })
+  .then((res) => res.json())
+  .then((state) => getAllList())
+  .catch((err) => console.log(err));
+};
+
+const handleListSectionClick = (event) => {
+  event.preventDefault();
+  if(event.target.classList.contains('edit-button')) {
+    editToDo(event);
+  } else if (event.target.classList.contains('submit-edit')) {
+    updateList(event)
+  } else if (event.target.classList.contains('cancel-edit')) {
+    getAllList();
+  } else if(event.target.classList.contains('delete-button')) {
+    deleteToDo(event);
+  }
+}
+
+
+//----------------------------Event Listeners-----------------------
+
+
+newListForm.addEventListener('submit', addNewList);
+
+
+
+listSection.addEventListener('click', handleListSectionClick);
+
+
+
+
+
 
 
 
