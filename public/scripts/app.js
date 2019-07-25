@@ -6,11 +6,11 @@ const form = document.querySelector('form');
 
 
 // ADD NAV ACTIVE CLASS
-// navLinks.forEach(link => {
-//   if (window.location.pathname === link.firstChild.getAttribute('href')) {
-//     link.classList.add('active')
-//   }
-// });
+navLinks.forEach(link => {
+  if (window.location.pathname === link.firstChild.getAttribute('href')) {
+    link.classList.add('active')
+  }
+});
 
 
 // EVENT LISTENERS
