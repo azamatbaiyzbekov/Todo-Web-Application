@@ -18,20 +18,28 @@ module.exports = {
     let user = req.session.currentUser;
     db.List.create(req.body, (error, createdList) =>{
       if (error) return response.sendErrorResponse(res, error);
-      db.User.findOne({_id:user}, (error, foundUser) => {
+      db.User.findOne({ _id:user }, (error, foundUser) => {
         if (error) return response.sendErrorResponse(res, error);
         foundUser.lists.push(createdList._id)
         foundUser.save()
-        response.sendResponse(res, foundUser);
+        response.sendResponse(res, createdList);
         console.log(createdList);
       })
     })
   },
   updateList: (req, res) => {
     let user = req.session.currentUser;
-    db.List.findByIdAndUpdate(req.params.id, req.body, { updated: true }, (error, updatedList) => {
+    db.List.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedList) => {
       if (error) return response.sendErrorResponse(res, error);
       response.sendResponse(res, updatedList);
+      console.log(updatedList);
+    })
+  },
+  deleteList: (req, res) => {
+    db.List.findByIdAndDelete(req.params.id, (error, deletedList) => {
+      if (error) return response.sendErrorResponse(res, error);
+      response.sendResponse(res, deletedList);
+      console.log(deletedList);
     })
   }
 }
