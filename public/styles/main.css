@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Lobster+Two');
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -6,22 +8,32 @@
 }
 
 body {
-  background-color: aquamarine;
+  background-image: linear-gradient(to left,black,gray,black);
   text-align: center;
-  font-family: sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
   margin-bottom: 100px;
 }
 
-h1, h2 {
-  margin-bottom: 1.5em;
+h2 {
+  margin-bottom: 20px;
   color: white;
+  font-size: 25px;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: white;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 40px;
 }
 
 label {
   display: block;
   margin-bottom: 1em;
+  font-size: 25px;
   font-size: 1em;
-  color: #999;
+  color: white;
 }
 
 input {
@@ -34,7 +46,7 @@ input {
 }
 
 input[type="submit"] {
-  background: steelblue;
+  background-image: linear-gradient(to right, yellow, turquoise, blue);
   width: auto;
   padding: .8em 1.8em;
   font-size: 1em;
@@ -67,29 +79,41 @@ input[type="submit"] {
 }
 
 /* Nav */
+.header {
+  height: 75px;
+  width: 100%;
+  background-image: linear-gradient(to left,black, white, black);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 
 .nav-bar h1 {
   display: inline;
   float: left;
   font-size: 40px;
-  color: gray;
   margin: 0;
   padding: 10px;
-}
-
-.nav-bar img {
-  display: inline;
-  float: left;
+  font-family: 'Lobster Two', cursive;
 }
 
 .nav-bar a {
   display: inline;
-  background-color: lightslategray;
   color: white;
   overflow: hidden;
   padding: 0 5%;
   padding: 25px 20px;
   float: right;
+}
+
+.nav-bar a:hover {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/squiggle.svg");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 20%;
+  border-bottom: 0;
+  padding-bottom: .3em;
+  text-decoration: none;
 }
 
 nav {
@@ -145,11 +169,48 @@ li.active a, nav li:hover a {
   margin: 0 auto;
 }
 
-/* .main{
-  background-color: white;
+.input-error {
+  background-color: #f5c6cb;
+  border: 2px solid #721c24;
+}
+
+/* intro */
+.intro {
+  margin-top: 75px;
+  /* position: relative; */
+  padding: 50px;
+  /* height: 300px; */
+  width: 100%;
+  margin-bottom: 0;
+  /* background-image: linear-gradient(to left, grey, white); */
+}
+
+.intro h1 {
+  font-size: 75px;
+  color: white;
+  font-family: 'Julius Sans One', sans-serif;
+  display: block
+}
+
+.intro img {
+  height: 400px;
+  width: 50%;
+  margin: 30px auto;
+}
+
+.features h2 {
   display: block;
-  max-width: 500px;
-  height: 50%;
-  border: 2px solid black;
-  overflow: hidden;
-} */
+  font-size: 50px;
+  color: wheat;
+  text-align: center;
+}
+
+.features {
+  color: white;
+}
+
+.features h5 {
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}

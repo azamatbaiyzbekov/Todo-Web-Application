@@ -1,6 +1,5 @@
 console.log('Public');
 
-const mainPage = document.querySelector('main-page');
 const navLinks = document.querySelector('nav li');
 const form = document.querySelector('form');
 
@@ -242,7 +241,7 @@ document.addEventListener('blur', (e) => {
       e.target.classList.add('input-error');
       e.target.insertAdjacentHTML('afterend', `
         <div class='alert ${e.target.id}-message'>
-          Password must be at least 4 characters
+          Password must be at least 4 characters!
         </div>
       `);
     }

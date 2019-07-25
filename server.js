@@ -22,17 +22,16 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  console.log('REQ SESSION = ', req.session);
+  // console.log('REQ SESSION = ', req.session);
   next();
 });
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 // EJS
 app.set('view engine', 'ejs');
 
-// SECTION : API Endpoints
 // SECTION : Routes
 
 // Root Route
@@ -51,14 +50,16 @@ app.use('/accounts', routes.accounts);
 // Profile Route
 app.use('/profile', routes.profile);
 
+// Users Lists/Tasks
+app.use('/lists', routes.lists);
+
+// SECTION : API Endpoints
 // Users Route
 app.use('/api/users', routes.users);
 
-// Users Lists
-app.use('/lists', routes.lists);
 
 // Users Tasks
-app.use('/tasks', routes.tasks);
+// app.use('/tasks', routes.tasks);
 
 // SECTION : Server Listener 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
