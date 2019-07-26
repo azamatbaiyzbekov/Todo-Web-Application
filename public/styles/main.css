@@ -26,6 +26,8 @@ h1 {
   color: white;
   font-family: 'Julius Sans One', sans-serif;
   font-size: 40px;
+  text-shadow: 1px 1px black;
+  font-weight: 600;
 }
 
 label {
@@ -50,7 +52,7 @@ input[type="submit"] {
   width: auto;
   padding: .8em 1.8em;
   font-size: 1em;
-  color: #fff;
+  color: black;
   font-weight: 600;
   border: 1px solid #ddd;
   border-radius: .4em;
@@ -99,6 +101,8 @@ input[type="submit"] {
 
 .nav-bar a {
   display: inline;
+  text-shadow: 1px 1px white;
+  font-weight: 600;
   color: navy;
   font-size: 18px;
   overflow: hidden;
@@ -166,6 +170,8 @@ li.active a, nav li:hover a {
   border-radius: 4px;
   color: #721c24;
 }
+
+
 
 .alert .container {
   margin: 0 auto;

@@ -4,6 +4,7 @@ const routes = require('./routes');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
+
 // SECTION : Instanced Modules
 const app = express();
 
@@ -39,6 +40,7 @@ app.use('/', routes.views);
 // Accounts Route
 app.use('/accounts', routes.accounts);
 
+// SECTION : Root Route via routes
 // Profile Route
 app.use('/profile', routes.profile);
 
@@ -49,9 +51,6 @@ app.use('/lists', routes.lists);
 // Users Route
 app.use('/api/users', routes.users);
 
-
-// Users Tasks
-// app.use('/tasks', routes.tasks);
 
 // SECTION : Server Listener 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));

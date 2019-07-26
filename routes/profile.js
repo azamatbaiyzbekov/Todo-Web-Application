@@ -5,3 +5,4 @@ const ctrl = require('../controllers');
 router.get('/', ctrl.profileCtrl.showProfile);
 
 module.exports = router;
+

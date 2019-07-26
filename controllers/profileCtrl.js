@@ -1,4 +1,5 @@
 const db = require('../models');
+const response = require('./response');
 
 // GET User Profile
 const showProfile = (req, res) => {

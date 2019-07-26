@@ -12,7 +12,7 @@ module.exports = {
     })
   },
   show: (req, res) => {
-    db.User.findById(req.params.id)
+    db.User.findById(req.session.currentUser._id)
     .populate('lists')
     .exec((error, foundUser) => {
       if (error) return response.sendErrorResponse(res, error);

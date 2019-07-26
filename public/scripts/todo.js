@@ -1,3 +1,7 @@
+// const newSession = (req, res)=> {
+//     res.rend('accounts/login');
+// }
+
 const BASE_URL = '/api/users/current';
 
 // //---------------------------------------STATE VARIABLES-----------//
@@ -119,20 +123,18 @@ getUser();
          })
          .catch((err) => console.log(err))
      };
-console.log(addList)
+console.log(addList);
 
 
-const deleteList = (event) => {
-  const listId = event.target.parentNode.id;
-  fetch(`${LIST_URL}/${listId}`, {
-    method: 'DELETE',
-  })
-    .then((res) => res.json())
-    .then((data) => getUser())
-    .catch((err) => console.log(err));
-}
-​
-
+// const deleteList = (event) => {
+//   const listId = event.target.parentNode.id;
+//   fetch(`${LIST_URL}/${listId}`, {
+//     method: 'DELETE',
+//   })
+//     .then((res) => res.json())
+//     .then((data) => getUser())
+//     .catch((err) => console.log(err));
+// }
 // const handleListSectionClick = (event) => {
 //   event.preventDefault();
 //   if (event.target.classList.contains('edit-button')) {
