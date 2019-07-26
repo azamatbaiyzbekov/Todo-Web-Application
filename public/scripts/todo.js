@@ -110,7 +110,6 @@ console.log(addList);
 //     deleteList(event);
 //   }
 // }
-=======
  
 const deleteList = (event) => {
   const listId = event.target.parentNode.id;
