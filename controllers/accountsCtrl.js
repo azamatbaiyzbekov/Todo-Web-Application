@@ -2,7 +2,6 @@ const db = require('../models');
 const bcrypt = require('bcrypt');
 
 
-
 // ====== SIGN UP ====== // 
 
 

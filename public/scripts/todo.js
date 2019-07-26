@@ -1,7 +1,6 @@
 const BASE_URL = '/api/users/current';
 const LIST_URL = '/lists';
 
-
 let state = {
   user: {},
   lists: [],
@@ -23,7 +22,7 @@ const render = (state) => {
     const addTask = document.getElementById('submit')
     addTask.addEventListener('click', includeTask)
   });
-}
+};
 
 const getUser = () => {                                    
  
@@ -34,9 +33,10 @@ const getUser = () => {
      state.lists = json.data.lists;
     render(state);
    }).catch((err) => console.log(err));
-}
+};
 
 getUser();
+
 
 displayTasks = tasks => {
   if (tasks.length > 0) {
@@ -45,7 +45,7 @@ displayTasks = tasks => {
     return ''
   }
   
-}
+};
 
 const toDoTemplate = (list) => {
 	return `<div class='list-card' id="${list._id}">
@@ -57,7 +57,7 @@ const toDoTemplate = (list) => {
     ${displayTasks(list.tasks)}
   </ul>
 	</div>`
-  }
+  };
 
 
 
@@ -93,7 +93,7 @@ const deleteList = (event) => {
     .then((res) => res.json())
     .then((data) => getUser())
     .catch((err) => console.log(err));
-}
+};
 
 
 const editToDo = (event) => {
@@ -110,7 +110,7 @@ const editToDo = (event) => {
       <button class="submit-edit">Submit</button>
     </form>
   `;
-}
+};
 
 const updateList = (event) => {
     const listId = event.target.parentNode.parentNode.id;
@@ -124,7 +124,7 @@ const updateList = (event) => {
   .then((res) => res.json())
   .then((data) => getUser())
   .catch((err) => console.log(err));
-}
+};
 
 
 const includeTask = (event) => {

@@ -3,12 +3,9 @@ console.log('Public');
 const navLinks = document.querySelector('nav li');
 const form = document.querySelector('form');
 
-
-
 const newSession = (req, res) => {
   res.rend('accounts/login');
 }
-
 
 // EVENT LISTENERS
 // Validate Form Inputs
