@@ -137,7 +137,6 @@ const editToDo = (event) => {
     </form>
   `;
 }
-
 const updateList = (event) => {
     const listId = event.target.parentNode.parentNode.id;
     const listName = document.getElementById('editListName').value;
@@ -151,15 +150,12 @@ const updateList = (event) => {
   .then((data) => getUser())
   .catch((err) => console.log(err));
 }
-
-
 const includeTask = (event) => {
   event.preventDefault();
   const listId = event.target.parentNode.id;
   const task = document.getElementById('task')
  
   const newTask = { task: task.value };
-
   console.log(newTask)
       
   fetch(`${LIST_URL}/${listId}/tasks`, {
@@ -177,12 +173,7 @@ const includeTask = (event) => {
     })
     .catch((err) => console.log(err))
     };
-
     
-
-
-
-
 function handleListSectionClick (event) {
   event.preventDefault();
    if(event.target.classList.contains('delete-button')) {
@@ -192,14 +183,6 @@ function handleListSectionClick (event) {
   } else if (event.target.classList.contains('submit-edit')) {
     updateList(event)
 }
-
 }
-
 addList.addEventListener('click', addNewList);
-
 listSection.addEventListener('click', handleListSectionClick);
-
-
-
-
-
