@@ -2,6 +2,7 @@
 //     res.rend('accounts/login');
 // }
 
+
 const BASE_URL = '/api/users/current';
 const LIST_URL = '/lists';
 // const TASK_URL = '/tasks';
@@ -191,10 +192,11 @@ function handleListSectionClick (event) {
     editToDo(event);
   } else if (event.target.classList.contains('submit-edit')) {
     updateList(event)
-}
+  } else if (event.target.classList.contains('cancel-edit')) {
+    updateList(event)
 
 }
-
+}
 addList.addEventListener('click', addNewList);
 
 listSection.addEventListener('click', handleListSectionClick);
