@@ -222,3 +222,11 @@ li.active a, nav li:hover a {
   text-align: center;
   color: white;
 }
+
+.list-card{
+  width: 50vw;
+  padding: 1em;
+  background-color: whitesmoke;
+  margin-bottom: 1em;
+  color: black;
+}
