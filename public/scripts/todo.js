@@ -1,11 +1,6 @@
-// const newSession = (req, res)=> {
-//     res.rend('accounts/login');
-// }
-
-
 const BASE_URL = '/api/users/current';
 const LIST_URL = '/lists';
-// const TASK_URL = '/tasks';
+
 
 let state = {
   user: {},
@@ -13,8 +8,6 @@ let state = {
   tasks: []
  }
 
-
-// const newListForm = document.getElementById('newListForm');
 const listSection = document.getElementById('list');
 const text = document.getElementById('ToDo');
 const addList = document.getElementById('add-list');
@@ -83,8 +76,6 @@ const toDoTemplate = (list) => {
          .then((res) => res.json())
          .then((json) => {
           console.log(json)
-          // state.lists = json.data.lists;
-          // render(state);
           window.location.reload();
            name.value = '';
            name.focus();
@@ -93,26 +84,6 @@ const toDoTemplate = (list) => {
      };
 console.log(addList);
 
-
-// const deleteList = (event) => {
-//   const listId = event.target.parentNode.id;
-//   fetch(`${LIST_URL}/${listId}`, {
-//     method: 'DELETE',
-//   })
-//     .then((res) => res.json())
-//     .then((data) => getUser())
-//     .catch((err) => console.log(err));
-// }
-// const handleListSectionClick = (event) => {
-//   event.preventDefault();
-//   if (event.target.classList.contains('edit-button')) {
-//     editList(event);
-//   } else if (event.target.classList.contains('cancel-edit')) {
-//     getUser();
-//   } else if (event.target.classList.contains('delete-button')) {
-//     deleteList(event);
-//   }
-// }
  
 const deleteList = (event) => {
   const listId = event.target.parentNode.id;
@@ -182,10 +153,6 @@ const includeTask = (event) => {
     };
 
     
-
-
-
-
 function handleListSectionClick (event) {
   event.preventDefault();
    if(event.target.classList.contains('delete-button')) {
