@@ -29,7 +29,7 @@ const sendErrorResponse = (res, error) => {
 };
 
 module.exports ={
-	resultAll,
+  resultAll,
   sendResponse,
   sendErrorResponse
 };

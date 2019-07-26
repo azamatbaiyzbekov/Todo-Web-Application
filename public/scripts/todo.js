@@ -59,9 +59,7 @@ const toDoTemplate = (list) => {
 	</div>`
   };
 
-
-
- const addNewList = (event) => {
+const addNewList = (event) => {
       event.preventDefault();
       const name = document.getElementById('ToDo')
       const newToDo = { typeOfList: name.value };
