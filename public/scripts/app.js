@@ -220,7 +220,7 @@ form && form.addEventListener('submit', (e) => {
       input.classList.add('input-error');
       input.insertAdjacentHTML('afterend', `
         <div class="alert alert-${input.id}">
-          Please enter your ${input.placeholder}
+          Please enter your ${input.name}
         </div>
       `);
     }
@@ -233,7 +233,7 @@ document.addEventListener('blur', (e) => {
     e.target.classList.add('input-error');
     e.target.insertAdjacentHTML('afterend', `
       <div class="alert alert-${e.target.id}">
-        Please enter your ${e.target.placeholder}
+        Please enter your ${e.target.name}
       </div>
     `);
   } else if (e.target.type === 'password' && e.target.value.length < 4) {

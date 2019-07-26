@@ -88,8 +88,29 @@ const toDoTemplate = (list) => {
          })
          .catch((err) => console.log(err))
      };
-console.log(addList)
+console.log(addList);
 
+
+// const deleteList = (event) => {
+//   const listId = event.target.parentNode.id;
+//   fetch(`${LIST_URL}/${listId}`, {
+//     method: 'DELETE',
+//   })
+//     .then((res) => res.json())
+//     .then((data) => getUser())
+//     .catch((err) => console.log(err));
+// }
+// const handleListSectionClick = (event) => {
+//   event.preventDefault();
+//   if (event.target.classList.contains('edit-button')) {
+//     editList(event);
+//   } else if (event.target.classList.contains('cancel-edit')) {
+//     getUser();
+//   } else if (event.target.classList.contains('delete-button')) {
+//     deleteList(event);
+//   }
+// }
+=======
  
 const deleteList = (event) => {
   const listId = event.target.parentNode.id;
@@ -178,7 +199,6 @@ function handleListSectionClick (event) {
 addList.addEventListener('click', addNewList);
 
 listSection.addEventListener('click', handleListSectionClick);
-
 
 
 

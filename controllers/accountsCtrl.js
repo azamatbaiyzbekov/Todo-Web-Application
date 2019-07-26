@@ -1,6 +1,8 @@
 const db = require('../models');
 const bcrypt = require('bcrypt');
 
+
+
 // ====== SIGN UP ====== // 
 
 
@@ -109,10 +111,10 @@ const deleteSession = (req, res) => {
 };
 
 module.exports = {
+  welcome,
   createUser,
   newUser,
   newSession,
   createSession,
   deleteSession,
-  welcome,
 };
