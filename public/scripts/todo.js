@@ -3,26 +3,21 @@
 // }
 
 const BASE_URL = '/api/users/current';
+const LIST_URL = '/lists';
+// const TASK_URL = '/tasks';
 
-// //---------------------------------------STATE VARIABLES-----------//
-// let state = {
-//   user: {},
-//   lists: []
-// }
+let state = {
+  user: {},
+  lists: [],
+  tasks: []
+ }
+
 
 // const newListForm = document.getElementById('newListForm');
 const listSection = document.getElementById('list');
+const text = document.getElementById('ToDo');
+const addList = document.getElementById('add-list');
 
-const toDoTemplate = (list) => {
-	return `<div class='list-card' id="${list._id}">
-  <h4>${list.typeOfList}</h4>
-  <input name='task' id="task"><button>Add Task</button>
-	<button class="delete-button">&times;</button> 
-	<button class="edit-button">edit</button>
-	</div>`
-  }
-
-  
 
 const render = (state) => {
 	console.log(state)
@@ -31,35 +26,43 @@ const render = (state) => {
     console.log(list)
     const template = toDoTemplate(list);
     listSection.insertAdjacentHTML('afterbegin', template)
+    const addTask = document.getElementById('submit')
+    addTask.addEventListener('click', includeTask)
   });
 }
 
-  
-const LIST_URL = '/lists';
-// const TASK_URL = '/tasks';
-
-const text = document.getElementById('ToDo');
-const addList = document.getElementById('add-list');
-const addTask = document.getElementById('task')
-
-
-let state = {
-  user: {},
-  lists: []
- }
-
- const getUser = () => {                                    
+const getUser = () => {                                    
  
-      fetch(BASE_URL)
-       .then((res) => res.json())
-       .then(json => {
-   	    state.user = json.data;
-   	    state.lists = json.data.lists;
-        render(state);
-       }).catch((err) => console.log(err));
+  fetch(BASE_URL)
+   .then((res) => res.json())
+   .then(json => {
+     state.user = json.data;
+     state.lists = json.data.lists;
+    render(state);
+   }).catch((err) => console.log(err));
+}
+
+getUser();
+
+displayTasks = tasks => {
+  if (tasks.length > 0) {
+    return tasks.map(task => `<li>${task.task}</li>`).join("")
   }
   
-getUser();
+}
+
+const toDoTemplate = (list) => {
+	return `<div class='list-card' id="${list._id}">
+  <h4>${list.typeOfList}</h4>
+  <input name='task' id="task"><button type="submit" id="submit">Add Task</button>
+	<button class="delete-button">&times;</button> 
+  <button class="edit-button">edit</button>
+  <ul>
+    ${displayTasks(list.tasks)}
+  </ul>
+	</div>`
+  }
+
 
 
  const addNewList = (event) => {
@@ -106,19 +109,19 @@ const editToDo = (event) => {
   <h4>Edit ${toDoName}</h4>
     <form>
       <div>
-        <label for="listName">ToDo Name</label>
+        <label style="display: block; for="listName">ToDo Name</label>
         <input type="text" id="editListName" name="name" value="${toDoName}"/>
       </div>
       <button type="button" class="cancel-edit">Cancel</button>
       <button class="submit-edit">Submit</button>
     </form>
   `;
-};
+}
 
 const updateList = (event) => {
-  listId = event.target.parentNode.parentNode.id;
+    const listId = event.target.parentNode.parentNode.id;
     const listName = document.getElementById('editListName').value;
-    const newList= { name: listName, };
+    const newList= { typeOfList: listName, };
   fetch(`${LIST_URL}/${listId}`, {
     method: 'PUT',
     headers: { 'Content-type': 'application/json'},
@@ -127,39 +130,40 @@ const updateList = (event) => {
   .then((res) => res.json())
   .then((data) => getUser())
   .catch((err) => console.log(err));
-};
+}
 
 
 const includeTask = (event) => {
   event.preventDefault();
+  const listId = event.target.parentNode.id;
   const task = document.getElementById('task')
  
   const newTask = { task: task.value };
 
   console.log(newTask)
       
-  fetch(LIST_URL, {
+  fetch(`${LIST_URL}/${listId}/tasks`, {
     method: 'POST',
     headers: { 'Content-type': 'application/json', },
     body: JSON.stringify(newTask),
   })
     .then((res) => res.json())
     .then((json) => {
-    state.lists = json.data;
-    console.log(json)
-    // state.lists = json.data.lists;
-    // render(state);
-    // window.location.reload();
+    state.tasks = json.data.lists;
+    render(state);
+    window.location.reload();
     task.value = '';
     task.focus();
     })
     .catch((err) => console.log(err))
     };
 
+    
 
 
 
-const handleListSectionClick = (event) => {
+
+function handleListSectionClick (event) {
   event.preventDefault();
    if(event.target.classList.contains('delete-button')) {
     deleteList(event);
@@ -175,7 +179,7 @@ addList.addEventListener('click', addNewList);
 
 listSection.addEventListener('click', handleListSectionClick);
 
-addTask.addEventListener('click', includeTask)
+
 
 
 
