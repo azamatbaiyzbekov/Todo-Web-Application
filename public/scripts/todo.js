@@ -20,15 +20,16 @@ const addList = document.getElementById('add-list');
 
 
 const render = (state) => {
-	console.log(state)
+	// console.log(state)
   listSection.innerHTML = '';
   state.lists.forEach(list => {
-    console.log(list)
+    // console.log(list)
     const template = toDoTemplate(list);
     listSection.insertAdjacentHTML('afterbegin', template)
     const addTask = document.getElementById('submit')
-    addTask.addEventListener('click', includeTask)
-  });
+    addTask.addEventListener('click', includeTask);
+    console.log(state)
+    });
 }
 
 const getUser = () => {                                    
@@ -55,8 +56,8 @@ const toDoTemplate = (list) => {
 	return `<div class='list-card' id="${list._id}">
   <h4>${list.typeOfList}</h4>
   <input name='task' id="task"><button type="submit" id="submit">Add Task</button>
-	<button class="delete-button">&times;</button> 
-  <button class="edit-button">edit</button>
+	<button class="delete-button">Delete</button> 
+  <button class="edit-button">Edit</button>
   <ul>
     ${displayTasks(list.tasks)}
   </ul>
@@ -88,7 +89,7 @@ const toDoTemplate = (list) => {
          })
          .catch((err) => console.log(err))
      };
-console.log(addList);
+
 
 
 // const deleteList = (event) => {
