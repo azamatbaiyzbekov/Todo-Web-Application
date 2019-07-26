@@ -82,11 +82,7 @@ input[type="submit"] {
 
 /* Nav */
 .header {
-<<<<<<< HEAD
-  height: 70px;
-=======
   height: 75px;
->>>>>>> f80c928ec98a8cc0675d62f0597f0b1e4e048d83
   width: 100%;
   background-image: linear-gradient(to left,yellow, white, navy);
   position: fixed;

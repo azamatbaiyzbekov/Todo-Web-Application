@@ -2,7 +2,6 @@ const db = require('../models');
 const bcrypt = require('bcrypt');
 
 
-
 // ====== SIGN UP ====== // 
 
 
@@ -105,11 +104,12 @@ const createSession = (req, res) => {
 
 const deleteSession = (req, res) => {
   req.session.destroy((error) => {
-<<<<<<< HEAD
+
+    if (error) return res.render('profile/welcome', { errors: [{ message: 'Something went wrong, please try again' }] });
+
     if (error) return res.render('/accounts/welcome', { errors: [{ message: 'Something went wrong, please try again' }] });
-=======
+
     if (error) return res.render('profile/show', { errors: [{ message: 'Something went wrong, please try again' }] });
->>>>>>> f80c928ec98a8cc0675d62f0597f0b1e4e048d83
   })
   res.redirect('/accounts/login')
 };

@@ -9,7 +9,7 @@ module.exports = {
     })
   },
   showTask: (req, res) => {
-   db.Task.findOne({ _id: req.params.task_id }, (error, foundTask) => {
+    db.Task.findOne({ _id: req.params.task_id }, (error, foundTask) => {
      if (error) return response.sendErrorResponse(res, error);
      response.sendResponse(res, foundTask);
    })

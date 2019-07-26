@@ -1,10 +1,5 @@
-// const newSession = (req, res)=> {
-//     res.rend('accounts/login');
-// }
-
 const BASE_URL = '/api/users/current';
 const LIST_URL = '/lists';
-// const TASK_URL = '/tasks';
 
 let state = {
   user: {},
@@ -12,26 +7,12 @@ let state = {
   tasks: []
  }
 
-
-// const newListForm = document.getElementById('newListForm');
 const listSection = document.getElementById('list');
 const text = document.getElementById('ToDo');
 const addList = document.getElementById('add-list');
 
 
 const render = (state) => {
-<<<<<<< HEAD
-	// console.log(state)
-  listSection.innerHTML = '';
-  state.lists.forEach(list => {
-    // console.log(list)
-    const template = toDoTemplate(list);
-    listSection.insertAdjacentHTML('afterbegin', template)
-    const addTask = document.getElementById('submit')
-    addTask.addEventListener('click', includeTask);
-    console.log(state)
-    });
-=======
 	console.log(state)
   listSection.innerHTML = '';
   state.lists.forEach(list => {
@@ -41,8 +22,7 @@ const render = (state) => {
     const addTask = document.getElementById('submit')
     addTask.addEventListener('click', includeTask)
   });
->>>>>>> f80c928ec98a8cc0675d62f0597f0b1e4e048d83
-}
+};
 
 const getUser = () => {                                    
  
@@ -53,33 +33,31 @@ const getUser = () => {
      state.lists = json.data.lists;
     render(state);
    }).catch((err) => console.log(err));
-}
+};
 
 getUser();
+
 
 displayTasks = tasks => {
   if (tasks.length > 0) {
     return tasks.map(task => `<li>${task.task}</li>`).join("")
+  } else {
+    return ''
   }
   
-}
+};
 
 const toDoTemplate = (list) => {
 	return `<div class='list-card' id="${list._id}">
   <h4>${list.typeOfList}</h4>
   <input name='task' id="task"><button type="submit" id="submit">Add Task</button>
-<<<<<<< HEAD
-	<button class="delete-button">Delete</button> 
-  <button class="edit-button">Edit</button>
-=======
 	<button class="delete-button">&times;</button> 
   <button class="edit-button">edit</button>
->>>>>>> f80c928ec98a8cc0675d62f0597f0b1e4e048d83
   <ul>
     ${displayTasks(list.tasks)}
   </ul>
 	</div>`
-  }
+  };
 
 
 
@@ -98,40 +76,14 @@ const toDoTemplate = (list) => {
          .then((res) => res.json())
          .then((json) => {
           console.log(json)
-          // state.lists = json.data.lists;
-          // render(state);
           window.location.reload();
            name.value = '';
            name.focus();
          })
          .catch((err) => console.log(err))
      };
-<<<<<<< HEAD
-
-=======
 console.log(addList);
->>>>>>> f80c928ec98a8cc0675d62f0597f0b1e4e048d83
 
-
-// const deleteList = (event) => {
-//   const listId = event.target.parentNode.id;
-//   fetch(`${LIST_URL}/${listId}`, {
-//     method: 'DELETE',
-//   })
-//     .then((res) => res.json())
-//     .then((data) => getUser())
-//     .catch((err) => console.log(err));
-// }
-// const handleListSectionClick = (event) => {
-//   event.preventDefault();
-//   if (event.target.classList.contains('edit-button')) {
-//     editList(event);
-//   } else if (event.target.classList.contains('cancel-edit')) {
-//     getUser();
-//   } else if (event.target.classList.contains('delete-button')) {
-//     deleteList(event);
-//   }
-// }
  
 const deleteList = (event) => {
   const listId = event.target.parentNode.id;
@@ -141,7 +93,7 @@ const deleteList = (event) => {
     .then((res) => res.json())
     .then((data) => getUser())
     .catch((err) => console.log(err));
-}
+};
 
 
 const editToDo = (event) => {
@@ -158,7 +110,7 @@ const editToDo = (event) => {
       <button class="submit-edit">Submit</button>
     </form>
   `;
-}
+};
 
 const updateList = (event) => {
     const listId = event.target.parentNode.parentNode.id;
@@ -172,7 +124,7 @@ const updateList = (event) => {
   .then((res) => res.json())
   .then((data) => getUser())
   .catch((err) => console.log(err));
-}
+};
 
 
 const includeTask = (event) => {
@@ -201,10 +153,6 @@ const includeTask = (event) => {
     };
 
     
-
-
-
-
 function handleListSectionClick (event) {
   event.preventDefault();
    if(event.target.classList.contains('delete-button')) {
@@ -213,10 +161,11 @@ function handleListSectionClick (event) {
     editToDo(event);
   } else if (event.target.classList.contains('submit-edit')) {
     updateList(event)
-}
+  } else if (event.target.classList.contains('cancel-edit')) {
+    updateList(event)
 
 }
-
+}
 addList.addEventListener('click', addNewList);
 
 listSection.addEventListener('click', handleListSectionClick);
