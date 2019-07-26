@@ -1,0 +1,90 @@
+<% include ../partials/_head.ejs %>
+<script src="/scripts/todo.js" defer></script>
+<div id="date2"></div>
+
+<section class="profile-header">
+    <div class="nav-bar">
+    <h1>Welcome To Your Profile!</h1>
+      <a href="/accounts/logout">Log Out</a>
+    </div>
+  </section>
+
+
+    <div class="container">
+    
+    
+    <section>
+      <div class="form-group">
+        <label for="text">Add New List:</label>
+        <input type="text" id="ToDo" name="ToDo" placeholder="name of the list" />
+        <button type="submit" id="add-list">Add To Do</button>
+        
+      </div>
+      <section id="list"></section>
+    </section>
+  
+
+<style>
+
+.container h1 {
+  text-align: left;
+  font-weight: 800;
+  text-shadow: 2px 2px rgba(0,0,0,.5);
+  text-align: center;
+}
+  
+.nav-bar a {
+  display: inline;
+  text-shadow: 1px 1px white;
+  font-weight: 600;
+  color: white;
+  font-size: 18px;
+  overflow: hidden;
+  padding: 0 5%;
+  padding: 25px 20px;
+  float: right;
+  text-decoration: none;
+  top: 0;
+}
+
+.nav-bar a:hover {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/squiggle.svg");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 20%;
+  border-bottom: 0;
+  padding-bottom: .3em;
+  text-decoration: none;
+}
+.container h1 {
+  text-align: left;
+  font-weight: 800;
+  text-shadow: 2px 2px rgba(0,0,0,.5);
+  text-align: center;
+}
+:root {
+  --righteous-font: 'Righteous', cursive;
+}
+
+body { 
+  background-image: linear-gradient(navy, grey, white);
+  min-height: 100vh;
+  z-index: -10;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 1.3rem;		    
+}
+
+</style>
+    
+
+
+      
+
+
+
+
+
+<% include ../partials/_footer.ejs %>

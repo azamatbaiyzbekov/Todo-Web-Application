@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const ctrl = require('../controllers');
 
-router.get('/', ctrl.accountsCtrl.index);
-router.get('/:name', ctrl.accountsCtrl.show);
-router.post('/', ctrl.accountsCtrl.create);
-router.put('/:name', ctrl.accountsCtrl.update);
-router.delete('/:id', ctrl.accountsCtrl.delete);
+router.get('/signup', ctrl.accountsCtrl.newUser);
+router.post('/signup', ctrl.accountsCtrl.createUser);
+router.get('/login', ctrl.accountsCtrl.newSession);
+router.get('/welcome', ctrl.accountsCtrl.welcome);
+router.post('/login', ctrl.accountsCtrl.createSession);
+router.get('/logout', ctrl.accountsCtrl.deleteSession);
+
 
 module.exports = router;

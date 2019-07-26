@@ -1,3 +1,232 @@
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Lobster+Two');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
 body {
-  background-color: aquamarine;
+  background-image: linear-gradient(to left,black,gray,black);
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+  margin-bottom: 100px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 25px;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: white;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 40px;
+  text-shadow: 1px 1px black;
+  font-weight: 600;
+}
+
+label {
+  display: block;
+  margin-bottom: 1em;
+  font-size: 25px;
+  font-size: 1em;
+  color: white;
+}
+
+input {
+  width: 100%;
+  padding: 1em;
+  font-size: 1em;
+  line-break: 1.6;
+  border: 2px solid #ddd;
+  text-align: center;
+}
+
+input[type="submit"] {
+  background-image: linear-gradient(to right, yellow, turquoise, blue);
+  width: auto;
+  padding: .8em 1.8em;
+  font-size: 1em;
+  color: black;
+  font-weight: 600;
+  border: 1px solid #ddd;
+  border-radius: .4em;
+  float: right;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* LAYOUT */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto 3em;
+  overflow: hidden;
+}
+
+.login, .signup {
+  max-width: 600px;
+  margin: 3em auto;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 3em;
+  overflow: hidden;
+}
+
+/* Nav */
+.header {
+  height: 75px;
+  width: 100%;
+  background-image: linear-gradient(to left,yellow, white, navy);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav-bar h1 {
+  display: inline;
+  float: left;
+  font-size: 40px;
+  margin: 0;
+  padding: 10px;
+  font-family: 'Lobster Two', cursive;
+}
+
+.nav-bar a {
+  display: inline;
+  text-shadow: 1px 1px white;
+  font-weight: 600;
+  color: navy;
+  font-size: 18px;
+  overflow: hidden;
+  padding: 0 5%;
+  padding: 25px 20px;
+  float: right;
+  text-decoration: none;
+}
+
+.nav-bar a:hover {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/squiggle.svg");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 20%;
+  border-bottom: 0;
+  padding-bottom: .3em;
+  text-decoration: none;
+}
+
+nav {
+  background-color: #ddd;
+  width: 100%;
+  padding: 0 5%;
+  color: #444;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+nav ul {
+  /* font-size: 0; */
+  float: right;
+}
+
+nav li {
+  list-style-type: none;
+  display: inline-block;
+  font-size: 1em;
+}
+
+nav li a {
+  display: block;
+  padding: 20px 25px;
+  text-decoration: none;
+  color: #444;
+}
+
+li.active a, nav li:hover a {
+  text-decoration: none;
+  color: #ddd;
+  background: #444;
+}
+
+/* Messages */
+
+.alert.error:first-of-type {
+  margin: -30px auto 10px;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  max-width: 680px;
+  padding: 20px;
+  margin: 0 auto 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  color: #721c24;
+}
+
+
+
+.alert .container {
+  margin: 0 auto;
+}
+
+.input-error {
+  background-color: #f5c6cb;
+  border: 2px solid #721c24;
+}
+
+/* intro */
+.intro {
+  margin-top: 75px;
+  /* position: relative; */
+  padding: 50px;
+  /* height: 300px; */
+  width: 100%;
+  margin-bottom: 0;
+  /* background-image: linear-gradient(to left, grey, white); */
+}
+
+.intro h1 {
+  font-size: 75px;
+  color: white;
+  font-family: 'Julius Sans One', sans-serif;
+  display: block
+}
+
+.intro img {
+  height: 400px;
+  width: 50%;
+  margin: 30px auto;
+}
+
+.features h2 {
+  display: block;
+  font-size: 50px;
+  color: wheat;
+  text-align: center;
+}
+
+.features {
+  color: white;
+}
+
+.features h5 {
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}
+
+.list-card{
+  width: 50vw;
+  padding: 1em;
+  background-color: whitesmoke;
+  margin-bottom: 1em;
+  color: black;
 }

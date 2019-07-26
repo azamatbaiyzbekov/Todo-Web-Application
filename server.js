@@ -1,9 +1,9 @@
-console.log('Project 1!');
-
 // SECTION : Modules
 const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+
 
 // SECTION : Instanced Modules
 const app = express();
@@ -13,22 +13,43 @@ const PORT = process.env.PORT || 4000;
 
 
 // SECTION : Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+
+// Express Sesssion
+app.use(session({
+  secret: 'SHHHHH!',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use((req, res, next) => {
+  // console.log('REQ SESSION = ', req.session);
+  next();
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+// EJS
+app.set('view engine', 'ejs');
 
 // SECTION : Routes
 
-
+// Root Route
 app.use('/', routes.views);
 
 // Accounts Route
 app.use('/accounts', routes.accounts);
 
 // SECTION : Root Route via routes
+// Profile Route
+app.use('/profile', routes.profile);
 
+// Users Lists/Tasks
+app.use('/lists', routes.lists);
 
 // SECTION : API Endpoints
-
+// Users Route
+app.use('/api/users', routes.users);
 
 
 // SECTION : Server Listener 
