@@ -1,0 +1,188 @@
+<% include ../partials/_head.ejs %>
+<script src="/scripts/todo.js" defer></script>
+<div id="date2"></div>
+
+<section class="profile-header">
+    <div class="nav-bar">
+    <h1>Listy</h1>
+      <a href="/accounts/logout">Log Out</a>
+    </div>
+  </section>
+  <div id="date">
+
+  </div>
+
+
+    <div class="container">
+   
+    
+    <section>
+      <div class="to-do">
+        <label for="text">Create New List:</label>
+        <input type="text" id="ToDo" name="ToDo" placeholder="Enter List Type" />
+        <button type="submit" id="add-list">Add List</button>
+        
+      </div>
+
+    <h1 class="myLists">My Current Lists:</h1>
+      <section id="list">
+      </section>
+    </section>
+  
+
+<style>
+
+.nav-bar {
+  top: 0;
+  left: 0;
+}
+
+.container h1 {
+  text-align: left;
+  font-weight: 800;
+  text-shadow: 2px 2px rgba(0,0,0,.5);
+  text-align: center;
+}
+  
+.nav-bar a {
+  display: inline;
+  text-shadow: 1px 1px white;
+  font-weight: 600;
+  color: navy;
+  font-size: 18px;
+  overflow: hidden;
+  padding: 0 5%;
+  padding: 25px 20px;
+  float: right;
+  text-decoration: none;
+  top: 0;
+}
+
+.nav-bar a:hover {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/squiggle.svg");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 20%;
+  border-bottom: 0;
+  padding-bottom: .3em;
+  text-decoration: none;
+}
+
+label {
+  margin: 20px auto;
+}
+.profile-header {
+  height: 70px;
+  width: 100%;
+  background-image: linear-gradient(to left,yellow, white, navy);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+/* :root {
+  --righteous-font: 'Righteous', cursive;
+} */
+
+body { 
+  background-image: linear-gradient(navy, grey, white);
+  min-height: 100vh;
+  z-index: -10;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 1.3rem;		    
+}
+
+.myLists {
+  font-size: 40px;
+  text-align: center;
+  z-index: 10;
+
+}
+
+.to-do {
+  margin: 150px auto;
+  display: block;
+  width: 50%;
+  align-items: center;
+  background-image: linear-gradient(to right, white, grey, white);
+  border-radius: 20px;
+  height: 200px;
+  width: 50%;
+}
+
+#add-list {
+  background-image: linear-gradient(to right, yellow, white, blue);
+  width: 125px;
+  font-size: 15px;
+  margin-top: 20px;
+  padding: .5em;
+  font-weight: 200px;
+  font-family: 'Julius Sans One', sans-serif;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: .4em;
+  /* float: center; */
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.list-card {
+  background-image: linear-gradient(to left,black,gray,black);
+  color: white;
+  text-decoration: none;
+  margin: 50px auto;
+  border-radius: 20px;
+  width: 40%;
+
+}
+
+#list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#task {
+  display: block;
+  margin: 10px auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: 7px;
+}
+
+input {
+  height: 50px;
+  width: 80%;
+}
+
+label {
+  padding-top: 25px;
+}
+
+#submit, .delete-button, .edit-button {
+  background-image: linear-gradient(to right, grey, lightgrey);
+  width: 25%;
+  height: 30px;
+  margin-top: 20px;
+  padding: .5em;
+  font-weight: 200px;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: .4em;
+  cursor: pointer;
+  box-shadow: none;
+  color: white;
+  font-family: 'Julius Sans One', sans-serif;
+}
+</style>
+    
+
+
+
+<% include ../partials/_footer.ejs %>

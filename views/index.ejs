@@ -1,0 +1,40 @@
+<% include ./partials/_head.ejs %>
+  <header class="header">
+    <div class="nav-bar">
+      <h1 class="title">Listy</h1>
+        <a href="accounts/welcome">View Profile</a>
+        <a href="accounts/signup">Create Account</a>
+        <a href="accounts/login">Log In</a>
+        <!-- <a href="accounts/welcome">Welcome Page</a> -->
+    </div>
+  </header>
+
+  <section class="intro">
+    <h1>Simplify + Organize</h1>
+      <img class="intro-img" rel ="logo" type="img/png" src="/images/todo-icon.png" />
+  </section>
+
+  <section class="features">
+      <h2>What exactly is Listy?</h2>
+          <h5>Simplifying your life, one list at a time</h5>
+            <ul>✓ Shopping List</ul>
+            <ul>✓ Packing List</ul>
+            <ul>✓ ToDo List</ul>
+            <ul>✓ Agenda List</ul>
+            <ul>✓ Goal List</ul>
+            <ul>✓ etc...</ul>
+  </section>
+
+<% include ./partials/_footer.ejs %>
+
+<style>
+
+.features ul {
+  font-size: 20px;
+}
+
+.features h5 {
+  color: yellow;
+}
+
+</style>
