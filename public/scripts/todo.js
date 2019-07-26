@@ -48,6 +48,8 @@ getUser();
 displayTasks = tasks => {
   if (tasks.length > 0) {
     return tasks.map(task => `<li>${task.task}</li>`).join("")
+  } else {
+    return ''
   }
   
 }
