@@ -14,6 +14,7 @@
     
     
     <section>
+    <h1 class="user">Welcome Listy User!</h1>
       <div class="to-do">
         <label for="text">Create New List:</label>
         <input type="text" id="ToDo" name="ToDo" placeholder="Enter List Type" />
@@ -28,6 +29,11 @@
   
 
 <style>
+
+.user {
+  margin-top: 100px;
+
+}
 
 .nav-bar {
   top: 0;
@@ -81,7 +87,7 @@ label {
 } */
 
 body { 
-  background-image: linear-gradient(navy, grey, white);
+  background-image: linear-gradient(turquoise, grey, navy);
   min-height: 100vh;
   z-index: -10;
   background-position: center;
@@ -94,12 +100,13 @@ body {
 .myLists {
   font-size: 40px;
   text-align: center;
-  z-index: 10;
+  margin-top: 100px auto;
+
 
 }
 
 .to-do {
-  margin: 150px auto;
+  margin: 100px auto;
   display: block;
   width: 50%;
   align-items: center;
@@ -166,6 +173,7 @@ label {
   background-image: linear-gradient(to right, grey, lightgrey);
   width: 25%;
   height: 30px;
+  font-size: 15px;
   margin-top: 20px;
   padding: .5em;
   font-weight: 200px;

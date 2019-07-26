@@ -32,7 +32,6 @@ const render = (state) => {
 }
 
 const getUser = () => {                                    
- 
   fetch(BASE_URL)
    .then((res) => res.json())
    .then(json => {
@@ -48,15 +47,14 @@ displayTasks = tasks => {
   if (tasks.length > 0) {
     return tasks.map(task => `<li>${task.task}</li>`).join("")
   }
-  
 }
 
 const toDoTemplate = (list) => {
 	return `<div class='list-card' id="${list._id}">
   <h4>${list.typeOfList}</h4>
   <input name='task' id="task"><button type="submit" id="submit">Add Task</button>
-	<button class="delete-button">&times;</button> 
-  <button class="edit-button">edit</button>
+	<button class="delete-button">Delete</button> 
+  <button class="edit-button">Edit</button>
   <ul>
     ${displayTasks(list.tasks)}
   </ul>
@@ -88,7 +86,6 @@ const toDoTemplate = (list) => {
          })
          .catch((err) => console.log(err))
      };
-console.log(addList);
 
 
 // const deleteList = (event) => {
@@ -181,8 +178,10 @@ function handleListSectionClick (event) {
   } else if(event.target.classList.contains('edit-button')) {
     editToDo(event);
   } else if (event.target.classList.contains('submit-edit')) {
-    updateList(event)
-}
+    updateList(event);
+  } else if (event.target.classList.contains('cancel-edit')) { 
+
+  }
 }
 addList.addEventListener('click', addNewList);
 listSection.addEventListener('click', handleListSectionClick);
