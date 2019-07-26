@@ -70,7 +70,7 @@ input[type="submit"] {
 }
 
 .login, .signup {
-  max-width: 600px;
+  max-width: 500px;
   margin: 3em auto;
 }
 
@@ -221,12 +221,4 @@ li.active a, nav li:hover a {
   font-size: 20px;
   text-align: center;
   color: white;
-}
-
-.list-card{
-  width: 50vw;
-  padding: 1em;
-  background-color: whitesmoke;
-  margin-bottom: 1em;
-  color: black;
 }
