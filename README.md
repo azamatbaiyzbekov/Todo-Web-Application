@@ -6,7 +6,7 @@
 <https://imaekella.github.io/Todo-Web-Application/>
 
 ### Link to Heroku
-<https://git.heroku.com/listytodo.git>
+<https://listytodo.herokuapp.com/>
 
 
 #### What is Listy?
